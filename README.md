@@ -1,6 +1,6 @@
 # Pyhton-Basic-Projects
 ### Projects Included
-1.Game of Guess\
+1.[Game of Guess](https://github.com/AasaiAlangaram/Python-Basic-Projects/blob/master/Python%20Basic%20Projects.ipynb)\
 2.Rock,Paper,Scissor game\
 3.Password generator\
 4.Binary search algorithm

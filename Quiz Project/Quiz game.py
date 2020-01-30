@@ -6,27 +6,28 @@ class QA:
     self.corrAnsw = correctAnswer
     self.otherAnsw = otherAnswers
 
-qaList = [QA("Where is Minsk?", "in Belarus", ["in Russia", "such a city doesn't exist"]),
-QA("What is the capital of Australia?", "Canberra", ["Sydney", "New York", "Australia doesn't exist"]),
-QA("Which of the following is not on Earth?", "Sea of Tranquility", ["Mediterranean Sea", "Baltic Sea", "North Sea"]),
-QA("Which of the following is not a continent?", "Arctica", ["Antarctica", "America"]),
-QA("Which of the following is not an African country?", "Malaysia", ["Madagascar", "Djibouti", "South Africa", "Zimbabwe"])]
+qaList = [QA("What is (void*)0?", "Representation of NULL pointer", ["Representation of void pointer", "Error"]),
+QA("In which header file is the NULL macro defined?", "stdio.h and stddef.h", ["stdio.h", "stddef.h", "math.h"]),
+QA("A pointer is?", "A variable that stores address of other variable", ["A keyword used to create variables", "A variable that stores address of an instruction", "All of the above"]),
+QA("The operator used to get value at address stored in a pointer variable is?", "*", ["&", "&&"]),
+QA("The keyword used to transfer control from a function back to the calling function is?", "return", ["goto", "switch", "getch"])]
 
 corrCount = 0
 random.shuffle(qaList)
 for qaItem in qaList:
   print(qaItem.question)
-  print("Possible answers are:")
+  print("---------------------------")
   possible = qaItem.otherAnsw + [qaItem.corrAnsw] # square brackets turn correct answer into list for concatenating with other list
   random.shuffle(possible)
   count = 0 # list indexes start at 0 in python
   while count < len(possible):
     print(str(count+1) + ": " + possible[count])
     count += 1
+  print("---------------------------")
   print("Please enter the number of your answer:")
   userAnsw = input()
   while not userAnsw.isdigit():
-    print("That was not a number. Please enter the number of your answer:")
+    print("That is not a number. Please enter the number of your answer:")
     userAnsw = input()
   userAnsw = int(userAnsw)
   while  (userAnsw >= int(len(possible))):
@@ -36,8 +37,8 @@ for qaItem in qaList:
     print("Your answer was correct.")
     corrCount += 1
   else:
-    print("Your answer was wrong.")
-    print("Correct answer was: " + qaItem.corrAnsw)
+    print("Your answer is wrong.")
+    print("Correct answer : " + qaItem.corrAnsw)
   print("")
 
 print("You answered " + str(corrCount) + " of " + str(len(qaList)) + " questions correctly.")
